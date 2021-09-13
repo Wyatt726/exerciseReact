@@ -1,25 +1,106 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import './App.css'
+import DisplaySupers from './Components/DisplaySupers';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+    constructor(props){
+        super(props);
+        this.nameAll = [
+            'Mike',
+            'Nevin', 
+            'Aaron', 
+            'Tory', 
+            'Kelly'
+        ]
+
+    
+        this.state = { 
+          firstName: 'Reggie',
+          lastName: 'White',
+          names: ["Batman", "Superman", "Spiderman" ],         
+          superheroes: [
+            {
+                superheroId: 1,
+                name: 'Batman',
+                primaryAbility: 'Wealthy',
+                secondarAbility: 'Rich'
+            },
+            {
+                superheroId: 2,
+                name: 'Superman',
+                primaryAbility: 'Super strength',
+                secondarAbility: 'Fly'
+            },
+            {
+                superheroId: 3,
+                name: 'Spiderman',
+                primaryAbility: 'Spider senses',
+                secondarAbility: 'Shoots web'
+            }
+          ],
+          superName: '',
+        }
+    }
+
+    handleChange = (event) =>{
+        this.setState({
+            superName: event.target.value
+        });
+
+    }
+
+    render() {
+        return ( 
+            <React.Fragment>
+                <DisplaySupers superList={this.state.names} />
+                <form>
+                    <label>Super Name
+                        <input />
+                        <input onChange={this.handleChange} />
+                        <button type='button'>Click Me!</button>
+                    </label>
+                </form>
+            </React.Fragment>
+        );
+    }
 }
-
 export default App;
+        
+        
+
+
+
+// //Exercise 1
+// //state = {
+//     firstName: 'Reggie',
+//     lastName: 'White'
+// }
+
+// //Exercise 2
+// state = {
+//     names: ['Mike', 'Nevin', 'Aaron', 'Tory', 'Kelly']
+// }
+
+// //Exercise 3
+// state = {
+//     superheroes = [
+//         {
+//             superheroId: 1,
+//             name: 'Batman',
+//             primaryAbility: 'Wealthy',
+//             secondarAbility: 'Rich'
+//         },
+//         {
+//             superheroId: 2,
+//             name: 'Superman',
+//             primaryAbility: 'Super strength',
+//             secondarAbility: 'Fly'
+//         },
+//         {
+//             superheroId: 3,
+//             name: 'Spiderman',
+//             primaryAbility: 'Spider senses',
+//             secondarAbility: 'Shoots web'
+//         }
+//     ]
+// }
